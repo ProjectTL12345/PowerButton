@@ -14,8 +14,8 @@ void setup() {
 }
 
 void loop() {
-  int getPowerButton = digitalRead(7);
-  int getResetButton = digitalRead(8);
+  int getPowerButton = digitalRead(powerButton);
+  int getResetButton = digitalRead(resetButton);
   
   getButtonPush(power, getPowerButton);
   getButtonPush(power, getResetButton);
