@@ -1,26 +1,20 @@
 int power = 13;
 int powerButton = 7;
 
-int reset = 12;
-int resetButton = 6;
-
-void getButtonPush(int powerType, int buttonType);
-
 void setup() {
-  pinMode(power, OUTPUT);
   pinMode(powerButton, INPUT);
-  pinMode(reset, OUTPUT);
-  pinMode(resetButton, INPUT);
+  pinMode(power, OUTPUT);
+
+  Serial.begin(9600);
 }
 
 void loop() {
-  int getPowerButton = digitalRead(powerButton);
-  int getResetButton = digitalRead(resetButton);
-  
-  getButtonPush(power, getPowerButton);
-  getButtonPush(power, getResetButton);
-}
+  Serial.begin(400); // 0.4 Second
+  if (digitalRead(powerButton)) {
+    digitalWrite(power, HIGH);
+  } else {
+    digitalWrite(power, LOW);
+  }
 
-void getButtonPush(int powerType, int buttonType) {
-  digitalWrite(powerType, buttonType);
+  Serial.println("Power Status:" + power);
 }
